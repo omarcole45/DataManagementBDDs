@@ -29,6 +29,15 @@ class UsersWebServiceEndpointTest {
 		RestAssured.baseURI="http://localhost";
 		RestAssured.port=8080;
 	}
+	
+	/**
+	 * testUserLogin()
+	 * 
+	 * This tests the user/login resources
+	 * 
+	 * Tests are running in alphabetic order using @TestMethodOrder(Alphanumeric.class), hence
+	 * the method name is 'a()'
+	 */
 
 	@Test
 	void a() {
@@ -52,7 +61,14 @@ class UsersWebServiceEndpointTest {
 		
 		
 	}
-	
+	/**
+	 * testGetUser()
+	 * 
+	 * This tests the getUser resource.
+	 * 
+	 * Tests are running in alphabetic order using @TestMethodOrder(Alphanumeric.class), hence
+	 * the method name is 'b()'
+	 */
 	@Test
 	void b() {
 		
@@ -66,6 +82,7 @@ class UsersWebServiceEndpointTest {
 		String lastName = response.jsonPath().getString("lastName");
 		List<Map<String, Object>> addresses = response.jsonPath().getList("addresses");
 		String addressId = addresses.get(0).get("addressId").toString();
+		
 		
 		assertNotNull(userPublicId);
 		assertNotNull(userEmail);
