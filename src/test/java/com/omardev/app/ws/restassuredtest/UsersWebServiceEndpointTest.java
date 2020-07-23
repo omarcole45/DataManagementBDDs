@@ -72,9 +72,11 @@ class UsersWebServiceEndpointTest {
 	@Test
 	void b() {
 		
-		Response response = given().header("Authorization", authorization)
+		Response response = given()
+				.pathParam("id", userId)
+				.header("Authorization", authorization)
 				.accept(JSON).when()
-				.get(CONTEXT_PATH + "/users/" + userId).then().statusCode(200).contentType(JSON).extract().response();
+				.get(CONTEXT_PATH + "/users/{id}").then().statusCode(200).contentType(JSON).extract().response();
 		
 		String userPublicId = response.jsonPath().getString("userId");
 		String userEmail = response.jsonPath().getString("email");
